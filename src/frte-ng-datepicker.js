@@ -1,3 +1,6 @@
+/*
+ frte-ng-datepicker v1.0.1
+*/
 (function () {
     'use strict';
 
@@ -46,6 +49,11 @@ ng-required="isRequired"> \
             }
 
             function changeDate(date) {
+                var currentDate = ngModelCtrl.$viewValue;
+                if (moment(currentDate).format('YYYYMMDD') === moment(date).format('YYYYMMDD')) {
+                    return;
+                }
+
                 ngModelCtrl.$setViewValue(date);
 
                 if (attrs.fnChange) {
